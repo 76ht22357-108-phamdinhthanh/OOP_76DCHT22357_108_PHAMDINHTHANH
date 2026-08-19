@@ -1,5 +1,7 @@
+
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -21,7 +23,7 @@ void nhapNhanVien(NhanVien &nv) {
     cin >> nv.luongCoBan;
     cout << "  - Nhập hệ số lương: ";
     cin >> nv.heSo;
-    cin.ignore();
+    cin.ignore(); // Xóa ký tự xuống dòng còn sót lại
 }
 
 // Hàm xuất thông tin cho 1 nhân viên
@@ -52,6 +54,21 @@ void xuatDanhSach(const NhanVien ds[], int n) {
 
 int main() {
     int n;
+    cout << "Nhập số lượng nhân viên: ";
+    cin >> n;
+    cin.ignore(); // Clear bộ đệm sau khi nhập số
+
+    if (n <= 0) {
+        cout << "Số lượng nhân viên không hợp lệ!\n";
+        return 0;
+    }
+
+    // Khai báo mảng chứa danh sách nhân viên
     NhanVien ds[100];
+
+    // Thực hiện nhập và xuất danh sách
+    nhapDanhSach(ds, n);
+    xuatDanhSach(ds, n);
+
     return 0;
 }
